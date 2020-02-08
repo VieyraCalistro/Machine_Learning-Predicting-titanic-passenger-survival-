@@ -39,8 +39,3 @@ Confusion matrix to see the performance of the model.
 ![Collinearity](Screenshots/Collinearity.png)
 
 Here I am checking for collinearity. We show no strong correlation between the input features.
-
-
-![Learning_Curve](Screenshots/Learning_Curve.png)
-
-Checking learning curve.
