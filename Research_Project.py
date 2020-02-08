@@ -293,33 +293,6 @@ def Research():
     print(f'\nClassification Report:\n{classification_report(y_test, y_predict)}\n')
     # Same Scores and outputs
 
-    # Checking learning curve
-    train_sizes, train_scores, test_scores = learning_curve(ElasticNet(), X_Outliers_Removed, y_train_Samples_Reduced, train_sizes=[0.2, 0.4, 0.6, 0.8])
-
-    train_scores_mean = np.mean(train_scores, axis=1)
-    train_scores_std = np.std(train_scores, axis=1)
-    test_scores_mean = np.mean(test_scores, axis=1)
-    test_scores_std = np.std(test_scores, axis=1)
-
-    print(test_scores, '\n\n', test_scores_std)
-
-    plt.fill_between(train_sizes, train_scores_mean - train_scores_std,
-                 train_scores_mean + train_scores_std, alpha=0.1, color="r")
-    plt.fill_between(train_sizes, test_scores_mean - test_scores_std,
-                    test_scores_mean + test_scores_std, alpha=0.1, color="g")
-
-    plt.plot(train_sizes, train_scores_mean, 'o-', color="r", label="Training score")
-    plt.plot(train_sizes, test_scores_mean, 'o-', color="g",label="Testing score")
-
-    plt.xlabel("Training Samples")
-    plt.ylabel("Score")
-    plt.legend(loc="best")
-    plt.grid("on")
-    plt.savefig("Learning_Curve.png")
-    print(f'Learning_Curve.png saved!\n')
-    plt.show()
-    # Based on this learning curve I feel like more data will help the scores.
-
     # One last thing to try, lets scale the data to see if it helps the score
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X_Outliers_Removed)
